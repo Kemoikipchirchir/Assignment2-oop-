@@ -1,0 +1,65 @@
+//admission number =BSE-01-0007/2024
+//date 28/03/2024
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class RegistrationForm extends JFrame {
+    private JTextField nameField, mobileField, addressField;
+    private JRadioButton maleButton, femaleButton;
+    private JComboBox<String> dayBox, monthBox, yearBox;
+    private JCheckBox termsCheckBox;
+    private JButton submitButton, resetButton;
+
+    public RegistrationForm() {
+        setTitle("Registration Form");
+        setSize(500, 400);
+        setLayout(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        JLabel nameLabel = new JLabel("Name:");
+        nameLabel.setBounds(30, 30, 100, 25);
+        add(nameLabel);
+
+        nameField = new JTextField();
+        nameField.setBounds(130, 30, 200, 25);
+        add(nameField);
+
+        JLabel mobileLabel = new JLabel("Mobile:");
+        mobileLabel.setBounds(30, 70, 100, 25);
+        add(mobileLabel);
+
+        mobileField = new JTextField();
+        mobileField.setBounds(130, 70, 200, 25);
+        add(mobileField);
+
+        JLabel genderLabel = new JLabel("Gender:");
+        genderLabel.setBounds(30, 110, 100, 25);
+        add(genderLabel);
+
+        maleButton = new JRadioButton("Male");
+        femaleButton = new JRadioButton("Female");
+        maleButton.setBounds(130, 110, 80, 25);
+        femaleButton.setBounds(210, 110, 80, 25);
+
+        ButtonGroup genderGroup = new ButtonGroup();
+        genderGroup.add(maleButton);
+        genderGroup.add(femaleButton);
+
+        add(maleButton);
+        add(femaleButton);
+
+        JLabel dobLabel = new JLabel("DOB:");
+        dobLabel.setBounds(30, 150, 100, 25);
+        add(dobLabel);
+
+        String[] days = new String[31];
+        for (int i = 1; i <= 31; i++) {
+            days[i - 1] = String.valueOf(i);
+        }
+
+        String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November
